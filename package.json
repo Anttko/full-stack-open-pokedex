@@ -10,7 +10,7 @@
     "eslint": "eslint './**/*.{js,jsx}'",
     "cypress:open": "cypress open",
     "build": "webpack --mode production",
-    "test:e2e": "cypress run -- cypress/e2e/poke_app.spec.cy.js",
+    "test:e2e": "cypress run",
     "cy:run": "cypress run"
 
   },
