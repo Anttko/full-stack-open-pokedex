@@ -3,7 +3,7 @@ module.exports = {
     "browser": true,
     "es6": true,
     "jest/globals": true,
-    "browser": true,
+    "node": true,
     "cypress/globals": true
   },
   "extends": [
