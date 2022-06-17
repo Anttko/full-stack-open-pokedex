@@ -31,3 +31,5 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: cici2022a-exercise-pokedex
           heroku_email: ${{secrets.HEROKU_EMAIL}}
+          healthcheck: "https://cici2022a-exercise-pokedex.herokuapp.com/health"
+          checkstring: "ok"
