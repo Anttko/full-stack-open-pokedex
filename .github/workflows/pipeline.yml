@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - master
+    pull_request:
+      branches: [master]
+      types: [opened, synchronize]
+    
 jobs:
   simple_deployment_pipeline:  
     runs-on: ubuntu-20.04 
@@ -27,7 +31,7 @@ jobs:
           wait-on: http://localhost:5000
       - name: heroku deploy
         if: ${{ github.event_name == 'push' }}
-        uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        uses: akhileshns/heroku-deploy@v3.12.12 
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: cici2022a-exercise-pokedex
