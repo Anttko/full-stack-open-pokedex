@@ -22,5 +22,6 @@ jobs:
         run: echo "$COMMIT_MESSAGES"
       - name: test
         env: 
-          COMMIT_URL: ${{ toJson(github.event.commit_url) }}
-        run: echo "$COMMIT_URL"
+          COMMIT_URL: ${{ toJson(github.event.commits.url) }}
+          COMMITTER: ${{ toJson(github.event.commits.committer.name) }}
+        run: echo "$COMMIT_URL $COMMITTER"
