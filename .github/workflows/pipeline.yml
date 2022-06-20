@@ -57,7 +57,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:     
       - uses: actions/checkout@v3
-      - name: Sucsessfull build
+      - name: Build success
         uses: rjstone/discord-webhook-notify@v1
         if: ${{ success() }}
         env:
@@ -65,16 +65,16 @@ jobs:
           COMMITTER: ${{ toJson(github.event.commits.*.committer.name) }}
         with:
           text: A new version of Pokedex deployed 
-          severity: Informational
+          severity: info
           description: commit
-          details: to https://cici2022a-exercise-pokedex.herokuapp.com/health by ${{ fromJSON(env.COMMITTER) }}
+          details: to https://cici2022a-exercise-pokedex.herokuapp.com/health by ${{ fromJSON(env.COMMITTER[0]) }}
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
   dicord_message_failure:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
     steps:     
       - uses: actions/checkout@v3
-      - name: Test Failure
+      - name: Build failed
         uses: rjstone/discord-webhook-notify@v1
         if: ${{ failure() }}
         env:
@@ -82,7 +82,6 @@ jobs:
           COMMITTER: ${{ toJson(github.event.commits.*.committer.name) }}
         with:
           text: Build failed
-          severity: Error
-          description: 
-          details: to ${{ fromJSON(env.COMMIT_URL) }} by ${{ fromJSON(env.COMMITTER) }} broke the build ':('
+          severity: error
+          details: to ${{ fromJSON(env.COMMIT_URL[0]) }} by ${{ fromJSON(env.COMMITTER[0]) }} broke the build ':('
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
