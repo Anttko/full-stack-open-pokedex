@@ -68,7 +68,7 @@ jobs:
           text: A new version of Pokedex deployed 
           severity: info
           description: ${{ fromJSON(env.COMMIT_MSG) }}
-          details: to https://cici2022a-exercise-pokedex.herokuapp.com/health by ${{ fromJSON(env.COMMITTER) }}
+          details: to https://cici2022a-exercise-pokedex.herokuapp.com/ by ${{ fromJSON(env.COMMITTER) }}
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
   dicord_message_failure:
     needs: [simple_deployment_pipeline]
