@@ -24,4 +24,4 @@ jobs:
         env: 
           COMMIT_URL: ${{ toJson(github.event.commits.*.url) }}
           COMMITTER: ${{ toJson(github.event.commits.*.committer.name) }}
-        run: echo "$COMMIT_URL $COMMITTER[0]"
+        run: echo "$COMMIT_URL ${COMMITTER[0]}"
