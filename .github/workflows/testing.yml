@@ -23,5 +23,5 @@ jobs:
       - name: test
         env: 
           COMMIT_URL: ${{ github.event.commits.*.url }}
-          COMMITTER: ${{ toJson(github.event.commits.*.committer.name)[0] }}
+          COMMITTER: ${{ toJson(github.event.commits.*.committer.name) }}
         run: echo "$COMMIT_URL $COMMITTER"
