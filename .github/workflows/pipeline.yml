@@ -67,7 +67,7 @@ jobs:
           text: A new version of Pokedex deployed 
           severity: Informational
           description: commit
-          details: to https://cici2022a-exercise-pokedex.herokuapp.com/health by ${{ fromJSON(COMMITTER) }}
+          details: to https://cici2022a-exercise-pokedex.herokuapp.com/health by ${{ fromJSON(env.COMMITTER) }}
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
   dicord_message_failure:
     needs: [simple_deployment_pipeline]
@@ -84,5 +84,5 @@ jobs:
           text: Build failed
           severity: Error
           description: 
-          details: to ${{ fromJSON(COMMIT_URL) }} by ${{ fromJSON(COMMITTER) }} broke the build ':('
+          details: to ${{ fromJSON(env.COMMIT_URL) }} by ${{ fromJSON(env.COMMITTER) }} broke the build ':('
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
